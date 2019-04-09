@@ -1,5 +1,5 @@
 // create array holding comedian names, this is where search terms will be added
-var comedians = ["John Mulaney", "Pete Davidson", "Kate McKinnon", "Ali Wong", "Andy Samberg", "Kyle Kinane", "Eric Andre"];
+var comedians = ["John Mulaney", "Pete Davidson", "Kate McKinnon", "Andy Samberg", "Kyle Kinane", "Eric Andre"];
 
 
 // create function to display gifs, sourced from giphy
@@ -16,9 +16,12 @@ function displayComedianGifs() {
     console.log(queryURL);
     var results = response.data
     for (var i = 0; i < results.length; i++){
+      // animatedURL = results.data[i].images.downsized.url;
+      // stillURL = results.data[i].images.downsized_still.url;
       console.log(response)
       var comedianDiv = $("<div>");
-      var gifImg = $("<img class='gif col-md-6'>").attr("src", results[i].images.fixed_height.url)
+      var gifImg = $("<img class='gif col-md-6 my-3 mx-3'>").attr("src", results[i].images.downsized_medium.url).attr("data-state", "still")
+      
       comedianDiv.append(gifImg);
       $("#gifContainer").prepend(comedianDiv);
     }

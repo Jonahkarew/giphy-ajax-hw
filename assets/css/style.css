@@ -3,9 +3,18 @@ body{
   background-color: #c4f1ff;
 }
 
+p{
+  text-align: center;
+}
+
 .page-wrapper{
   margin: 2rem;
 }
+
+img{
+  height: auto;
+}
+
 
 
 .left-column{
@@ -20,6 +29,11 @@ body{
   min-height: 100vh;
   background-color: #B1D9E6;
   margin: 1em;
+}
+
+.square {
+  width: 100%;
+  margin: 0.5em;
 }
 
 .gif-button{
