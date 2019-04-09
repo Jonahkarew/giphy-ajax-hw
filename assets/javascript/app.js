@@ -4,18 +4,25 @@ var comedians = ["John Mulaney", "Pete Davidson", "Kate McKinnon", "Ali Wong", "
 
 // create function to display gifs, sourced from giphy
 function displayComedianGifs() {
-
+  $("#gifContainer").empty();
   var comedian = $(this).attr("data-name");
-  var queryURL = "https://api.giphy.com/v1/gifs/random?api_key=OOoRwBe4lN4ls7NhlvrzcVJYIt7UGCVL&limit=10";
+  var queryURL = "https://api.giphy.com/v1/gifs/search?q="+comedian+"&api_key=OOoRwBe4lN4ls7NhlvrzcVJYIt7UGCVL&limit=10";
 
   // make ajax call
   $.ajax({
     url: queryURL,
     method: "GET"
-  }).then(function (data) {
-    console.log(data);
-    var gifImg = $("<img class='gif'>").attr("src");
-    $(".right-column").prepend(gifImg);
+  }).then(function (response) {
+    console.log(queryURL);
+    var results = response.data
+    for (var i = 0; i < results.length; i++){
+      console.log(response)
+      var comedianDiv = $("<div>");
+      var gifImg = $("<img class='gif col-md-6'>").attr("src", results[i].images.fixed_height.url)
+      comedianDiv.append(gifImg);
+      $("#gifContainer").prepend(comedianDiv);
+    }
+    
 
 
   })
@@ -26,7 +33,7 @@ function displayComedianGifs() {
   //have gifs appear in still state
   //prepend new gifs above old gifs
 };
-displayComedianGifs()
+
 
 //function for rendering buttons
 function renderButtons() {
