@@ -19,12 +19,16 @@ function displayComedianGifs() {
    
       console.log(response)
       var comedianDiv = $("<div>");
+      
+      var ratingDiv = $("<p>");
+      ratingDiv.text(results[i].rating);
       var gifImg = $("<img class='gif square'>")
         .attr("src", results[i].images.original_still.url).attr("data-state", "still")
         .attr("data-still", results[i].images.original_still.url)
         .attr("data-animate", results[i].images.original.url);
       
       comedianDiv.append(gifImg);
+      comedianDiv.append(ratingDiv);
       $("#gifContainer").prepend(comedianDiv);
     }
     
