@@ -1,0 +1,42 @@
+body{
+  font-family: 'Oswald', sans-serif;
+  background-color: #c4f1ff;
+}
+
+.page-wrapper{
+  margin: 2rem;
+}
+
+
+.left-column{
+  flex: 1;
+  min-height: 100vh;
+  background-color: #95B7C1;
+  margin: 1em;
+}
+
+.right-column{
+  flex: 3;
+  min-height: 100vh;
+  background-color: #B1D9E6;
+  margin: 1em;
+}
+
+.gif-button{
+  width: 100%;
+  margin-top: 0.5em;
+}
+
+.gif-button:hover{
+  background-color: white;
+  border-color: white;
+  transform: .5s;
+}
+
+#submitButton{
+  margin: 1rem;
+}
+
+#searchForm{
+  margin: 1rem;
+}
