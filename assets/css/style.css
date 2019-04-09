@@ -10,11 +10,10 @@ p{
 .page-wrapper{
   margin: 2rem;
 }
-
+/* 
 img{
   height: auto;
-}
-
+} */
 
 
 .left-column{
@@ -33,7 +32,8 @@ img{
 
 .square {
   width: 100%;
-  margin: 0.5em;
+  margin: 1em;
+  padding: 1em;
 }
 
 .gif-button{

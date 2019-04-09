@@ -16,11 +16,13 @@ function displayComedianGifs() {
     console.log(queryURL);
     var results = response.data
     for (var i = 0; i < results.length; i++){
-      // animatedURL = results.data[i].images.downsized.url;
-      // stillURL = results.data[i].images.downsized_still.url;
+   
       console.log(response)
       var comedianDiv = $("<div>");
-      var gifImg = $("<img class='gif col-md-6 my-3 mx-3'>").attr("src", results[i].images.downsized_medium.url).attr("data-state", "still")
+      var gifImg = $("<img class='gif square'>")
+        .attr("src", results[i].images.original_still.url).attr("data-state", "still")
+        .attr("data-still", results[i].images.original_still.url)
+        .attr("data-animate", results[i].images.original.url);
       
       comedianDiv.append(gifImg);
       $("#gifContainer").prepend(comedianDiv);
@@ -36,6 +38,7 @@ function displayComedianGifs() {
   //have gifs appear in still state
   //prepend new gifs above old gifs
 };
+
 
 
 //function for rendering buttons
@@ -74,6 +77,18 @@ $("#submitButton").on("click", function(event)
 
 //add event listener to all elements with a class of gif-button $("document").on("click", ".gifButton", displayComedianGifs)
 $(document).on("click", ".gif-button", displayComedianGifs);
+$(document).on("click", ".gif", function() {
+  var state = $(this).attr("data-state");
+  if (state === "still"){
+    $(this).attr("src", $(this).attr("data-animate"));
+    $(this).attr("data-state", "animate");
+  }else {
+    $(this).attr("src", $(this).attr("data-still"));
+    $(this).attr("data-state", "still");
+  }
+  console.log(state)
+});
+
 
 //renderButtons() to display initial buttons
 renderButtons();
